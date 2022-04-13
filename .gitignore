@@ -1,6 +1,10 @@
 *.iml
 .gradle
 /local.properties
+.idea
+/.idea
+/.idea/copyright
+/.idea/vcs.xml
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -8,8 +12,46 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
+/.idea/misc.xml
 /build
 /captures
 .externalNativeBuild
 .cxx
 local.properties
+/*.iml
+/*/*/build
+/universe-sdk/build
+/variant.properties
+*.jks
+exoplayer-library/build
+exoplayer-library/buildout
+fastlane/README.md
+fastlane/report.xml
+*.lock
+
+# Generated files
+bin/
+gen/
+out/
+
+# Gradle files
+.gradle/
+build/
+/trueid-android-v2/
+
+# NewRelic
+newrelic.properties
+
+*.hprof
+
+*.exec
+
+# code style
+!.idea/codeStyles/Project.xml
+!.idea/codeStyles/codeStyleConfig.xml
+variant.properties
+
+*.aab
+
+# NPM dependencies files
+/node_modules/

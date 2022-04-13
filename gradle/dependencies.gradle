@@ -1,0 +1,7 @@
+def compileSdkVersion = 32
+def minSdkVersion = 21
+def targetSdkVersion = 32
+
+ext.compileSdkVersion = compileSdkVersion
+ext.minSdkVersion = minSdkVersion
+ext.targetSdkVersion = targetSdkVersion

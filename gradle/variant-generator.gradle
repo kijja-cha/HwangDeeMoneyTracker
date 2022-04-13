@@ -1,0 +1,16 @@
+def defaultPlatform = 'google'
+def defaultEnvironment = 'preprod'
+
+File variantFile = project.rootProject.file('variant.properties')
+if (!variantFile.exists()) {
+    Properties properties = new Properties()
+    properties.setProperty("platform", defaultPlatform)
+    properties.setProperty("environment", defaultEnvironment)
+
+    Writer writer = new FileWriter(variantFile, false)
+    properties.store(writer,
+            "#Platform can be: \"google\", \"huawei\"\n" +
+                    "#Environment can be: \"staging\", \"preprod\", \"prod\""
+    )
+    writer.close()
+}
