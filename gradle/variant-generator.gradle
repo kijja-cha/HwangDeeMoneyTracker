@@ -1,5 +1,5 @@
 def defaultPlatform = 'google'
-def defaultEnvironment = 'preprod'
+def defaultEnvironment = 'staging'
 
 File variantFile = project.rootProject.file('variant.properties')
 if (!variantFile.exists()) {

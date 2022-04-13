@@ -1,0 +1,18 @@
+apply {
+    from("$rootDir/gradle/dependencies-version.gradle")
+}
+
+ext {
+    androidX = [
+            core:"androidx.core:core-ktx:${versions.core}",
+
+            // Compose
+            ui:"androidx.compose.ui:ui:${versions.ui}",
+            material:"androidx.compose.material:material:${versions.material}",
+            preview:"androidx.compose.ui:ui-tooling-preview:${versions.preview}",
+            activity:"androidx.activity:activity-compose:${versions.activity}",
+
+            // Lifecycle
+            runtime:"androidx.lifecycle:lifecycle-runtime-ktx:${versions.runtime}",
+    ]
+}

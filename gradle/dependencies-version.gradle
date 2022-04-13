@@ -1,0 +1,11 @@
+ext {
+    versions = [
+            // AndroidX
+            core:"1.7.0",
+            ui:"$compose_version",
+            material:"$compose_version",
+            preview:"$compose_version",
+            activity:"1.4.0",
+            runtime:"2.4.1",
+    ]
+}

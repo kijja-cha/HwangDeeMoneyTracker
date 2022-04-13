@@ -13,6 +13,7 @@ file("$rootDir/variant.properties").withInputStream { variantProps.load(it) }
 apply {
     from("$rootDir/gradle/version.gradle")
     from("$rootDir/gradle/dependencies.gradle")
+    from("$rootDir/gradle/dependencies-size.gradle.kts")
 }
 
 android {
@@ -118,15 +119,34 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    implementation 'androidx.activity:activity-compose:1.4.0'
+    AndroidComponents()
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+}
+
+if (project.rootProject.file('variant.properties').exists()) {
+    def devProps = new Properties()
+    devProps.load(project.rootProject.file('variant.properties').newDataInputStream())
+    def variantConfig = devProps.platform + devProps.environment
+
+    android.variantFilter { variant ->
+        def platformName = variant.getFlavors().get(0).name
+        def environmentName = variant.getFlavors().get(1).name
+        def variantName = platformName + environmentName
+
+        if (variantConfig != variantName) {
+            variant.setIgnore(true)
+        }
+    }
+}
+
+task printVersion {
+    doLast {
+        println android.defaultConfig.versionName
+        println android.defaultConfig.versionCode
+    }
 }

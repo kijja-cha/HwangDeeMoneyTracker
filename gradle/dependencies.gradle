@@ -1,6 +1,26 @@
+apply {
+    from("$rootDir/gradle/dependencies-source.gradle")
+}
+
 def compileSdkVersion = 32
 def minSdkVersion = 21
 def targetSdkVersion = 32
+
+def dependencyGroup(Closure closure) {
+    closure.delegate = dependencies
+    return closure
+}
+
+def AndroidComponents = dependencyGroup {
+    api androidX.core
+    api androidX.ui
+    api androidX.material
+    api androidX.preview
+    api androidX.activity
+    api androidX.runtime
+}
+
+ext.AndroidComponents = AndroidComponents
 
 ext.compileSdkVersion = compileSdkVersion
 ext.minSdkVersion = minSdkVersion
